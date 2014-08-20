@@ -1,6 +1,6 @@
 {
-  "name": "shell app",
-  "description": "robots",
+  "name": "app",
+  "description": "crazy shit",
   "version": "0.0.1-27",
   "private": true,
   "dependencies": {
