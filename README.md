@@ -10,7 +10,7 @@ Setup
 
 5.run bower update
 
-6.run mongod <local persistence is currently disabled so this is not needed>
+6.run mongod  (local persistence is currently disabled so this is not needed)
 
 7.run grunt server
 
