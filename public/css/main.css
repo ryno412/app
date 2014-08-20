@@ -1,0 +1,45 @@
+/* line 1, ../../client/styles/main.scss */
+html, body, h1 {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 2, ../../client/styles/main.scss */
+.header {
+  border-bottom: 1px solid grey;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+/* line 3, ../../client/styles/main.scss */
+.header nav {
+  display: inline-block;
+  float: right;
+}
+/* line 4, ../../client/styles/main.scss */
+.header nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 5, ../../client/styles/main.scss */
+.header nav li {
+  display: inline-block;
+}
+/* line 6, ../../client/styles/main.scss */
+.header nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+/* line 9, ../../client/styles/main.scss */
+.header .user-name {
+  float: left;
+  margin: 5px 15px;
+  padding: 0;
+}
+
+/* line 11, ../../client/styles/main.scss */
+#content {
+  width: 50%;
+  margin: 0 auto;
+}

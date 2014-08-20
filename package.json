@@ -1,0 +1,35 @@
+{
+  "name": "shell app",
+  "description": "robots",
+  "version": "0.0.1-27",
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^1.0.4",
+    "connect-flash": "0.1.0",
+    "connect-mongo": "0.3.2",
+    "express": "3.x",
+    "hbs": "2.0.1",
+    "mongodb": "1.2.9",
+    "mongoose": "*",
+    "passport": "0.1.15",
+    "passport-local": "0.1.6",
+    "underscore": "1.4.4"
+  },
+  "scripts": {
+    "start": "server.js"
+  },
+  "engines": {
+    "node": "0.10.29"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-bowercopy": "~0.7.1",
+    "grunt-contrib-handlebars": "~0.6.0",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-express-server": "~0.4.11",
+    "grunt-contrib-compass": "~0.7.0",
+    "request": "~2.33.0",
+    "rjs-build-analysis": "0.0.3"
+  }
+}

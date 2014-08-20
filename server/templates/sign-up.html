@@ -1,0 +1,79 @@
+<!doctype html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/css/master.css'>
+    <script data-main="js/main" src="js/libs/require.js"></script>
+
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
+
+</head>
+ <body>
+<script>
+    require(['main']);
+</script>
+<script>
+    define(function (require){
+        var app = require('app');
+        var $ = require('jquery')
+        $(document).ready(function() {
+            $('#userSubmit').click(function(){
+                //add validation of course
+                var data = {
+                    firstName : $("#firstName").val(),
+                    lastName : $("#lastName").val(),
+                    email : $("#email").val(),
+                    password : $("#password").val(),
+                    passwordConfirm : $("#passwordConfirm").val()
+
+                };
+
+                $.ajax({
+
+                    url: "/registerUser",
+                    type: "POST",
+                    data: data,
+                    cache: false,
+                    statusCode: {
+                        401: function() {
+                            window.location = "/login"
+                        },
+                        400 : function (err) {
+/*                            console.log("email exists error");
+                            console.log(err)*/
+                            var resData = JSON.parse(err.responseText);
+                            //this isnt working
+                            $("#error-msg").html("enter fields:" + Object.keys(resData.errors))
+
+                        }
+                    },
+                    success: function (data) {
+                        window.location = "/"
+                    },
+                    error: function(err){
+
+                    }
+                });
+
+            });//end submit action
+        });//end Jquery
+    });
+
+
+</script>
+
+<form id="user-registration-form" action="/registerUser" method="POST">
+    <input id="firstName" class='inputFields' placeholder="First Name" type=text name="firstName">
+    <input id="lastName" class='inputFields' placeholder="Last Name" type=text name="lastName">
+    <input id="email" class='inputFields' placeholder="email" type=text name="email">
+    <input id="password" class='inputFields' placeholder="password" type="password" name="password">
+    <input id="passwordConfirm" class='inputFields' placeholder="confirm password" type="password" name="passwordConfirm">
+    <!-- <label for="msg" class='inputFields' >Enter a Message</label>-->
+
+    <input id="userSubmit" class='inputFields' type="button" value="Submit">
+
+</form>
+<div id="error-msg"></div>
+</body>
+</html>
+

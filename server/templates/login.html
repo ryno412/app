@@ -1,0 +1,42 @@
+<!doctype html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/css/master.css'>
+    <script data-main="js/main" src="js/libs/require.js"></script>
+
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
+
+</head>
+<body>
+<div id="content"></div>
+
+<div id="loginContainer">
+    <form id="login-form" action="/authenticate" method="post">
+        <fieldset>
+            <label>email:</label>
+            <input class='inputFields' type="text" name="email"/>
+
+            <label>Password:</label>
+            <input class='inputFields' type="password" name="password"/>
+
+            <input type="submit" value="Log In"/>
+            <a href="/sign-up">Sign Up</a>
+
+        </fieldset>
+    </form>
+    {{#if showError}}
+    <h1 id=login-error>{{errorMessage}}</h1>
+    {{/if}}
+</div>
+<script>
+    require(['main']);
+</script>
+</body>
+</html>
+
+
+
+
+
+
