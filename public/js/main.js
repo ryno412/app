@@ -1,4 +1,3 @@
-
 //     Underscore.js 1.5.2
 //     http://underscorejs.org
 //     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -10473,6 +10472,13 @@ if ( typeof noGlobal === strundefined ) {
 return jQuery;
 
 }));
+
+define("jquery", (function (global) {
+    return function () {
+        var ret, fn;
+        return ret || global.$;
+    };
+}(this)));
 
 //     Backbone.js 1.1.2
 
