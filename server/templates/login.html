@@ -12,7 +12,7 @@
 <div id="content"></div>
 
 <div id="loginContainer">
-    <form id="login-form" action="/authenticate" method="post">
+    <form id="login-form" action="/authenticate" method="POST">
         <fieldset>
             <label>email:</label>
             <input class='inputFields' type="text" name="email"/>
@@ -32,6 +32,56 @@
 <script>
     require(['main']);
 </script>
+<script>
+    define(function (require){
+        var app = require('app');
+        var $ = require('jquery')
+        $(document).ready(function() {
+            $('#userSubmit').click(function(){
+                //add validation of course
+                var data = {
+                    firstName : $("#firstName").val(),
+                    lastName : $("#lastName").val(),
+                    email : $("#email").val(),
+                    password : $("#password").val(),
+                    passwordConfirm : $("#passwordConfirm").val()
+
+                };
+
+                $.ajax({
+
+                    url: "/registerUser",
+                    type: "POST",
+                    data: data,
+                    cache: false,
+                    statusCode: {
+                        401: function() {
+                            window.location = "/login"
+                        },
+                        400 : function (err) {
+/*                            console.log("email exists error");
+                            console.log(err)*/
+                            var resData = JSON.parse(err.responseText);
+                            //this isnt working
+                            $("#error-msg").html("enter fields:" + Object.keys(resData.errors))
+
+                        }
+                    },
+                    success: function (data) {
+                        window.location = "/"
+                    },
+                    error: function(err){
+
+                    }
+                });
+
+            });//end submit action
+        });//end Jquery
+    });
+
+
+</script>
+
 </body>
 </html>
 
