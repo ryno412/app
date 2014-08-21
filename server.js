@@ -23,11 +23,10 @@ if (env === 'development') {
     app.set("dbURL","mongodb://localhost:27017/node-mongo-ex");
     app.set('host', 'http://localhost:8080')
 }
-console.log("yoooooo")
-
+console.log("ENV", env);
 if (env === 'production') {
     app.set('host', 'http://ec2-54-200-74-201.us-west-2.compute.amazonaws.com');
-    //app.set("dbURL",process.env.MONGOHQ_URL);
+    app.set("dbURL",process.env.MONGOHQ_URL);
 }
 
     app.set('port', process.env.PORT || 3000);
