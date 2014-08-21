@@ -1,13 +1,12 @@
 {
-  "name": "Shell App",
+  "name": "app",
   "version": "0.0.1",
   "authors": [
     "Ryan Ford <ryno412@gmail.com>"
   ],
-  "description": "chell application",
+  "description": "crazy shit",
   "main": "server.js",
-  "keywords": [
-  ],
+  "keywords": [],
   "license": "MIT",
   "homepage": "",
   "private": true,

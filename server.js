@@ -23,8 +23,7 @@ if (env === 'development') {
     app.set("dbURL","mongodb://localhost:27017/node-mongo-ex");
     app.set('host', 'http://localhost:8080')
 }
-console.log("ENV", env);
-console.log("ENV", process.env);
+
 if (env === 'production') {
     app.set('host', 'http://ec2-54-200-74-201.us-west-2.compute.amazonaws.com');
     app.set("dbURL",process.env.MONGOHQ_URL);
@@ -61,8 +60,6 @@ if (env === 'production') {
 
     passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'},
       function(username, password, done) {
-      console.log('$$$$$$$$$', username)
-      console.log('$$$$$$$$$', password)
       var user = {id:'ryno',name:'ryan'};
       return done(null,user);
 /*        User.findOne({ username: username }, function (err, user) {
@@ -74,12 +71,10 @@ if (env === 'production') {
       }
     ));
     passport.serializeUser(function(user, done) {
-    console.log("S",user)
         done(null, user.id);
     });
 
     passport.deserializeUser(function(userId, done) {
-        console.log("D",userId)
         done(null,{id:userId})
     });
 
@@ -97,14 +92,9 @@ app.route('/authenticate').post(
     failureFlash: true })
 );
 app.route('/*').all(auth(false)).get(function (req, res) {
-console.log("user in client route", req.user)
-console.log("session in client route", req.session)
-        var name = (req.user && req.user.name) ? req.user.name : "";
+        var name = (req.user && req.user.id) ? req.user.id : "";
         res.render('index', {layout:false, name:name});
 });
-
-
-
 
 function auth(ajax){
     return function(req, res, next){
