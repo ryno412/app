@@ -27,6 +27,15 @@ console.log("ENV", env);
 if (env === 'production') {
     app.set('host', 'http://ec2-54-200-74-201.us-west-2.compute.amazonaws.com');
     app.set("dbURL",process.env.MONGOHQ_URL);
+    //connect to the db.
+    mongoose.connect(app.get("dbURL"), function(err){
+        if (err){
+            throw err;
+        }
+        else {
+            console.log("Successfully connected to Mongo db")
+        }
+    });
 }
 
     app.set('port', process.env.PORT || 3000);
@@ -108,15 +117,7 @@ function auth(ajax){
     }
 }
 
-//connect to the db.
-/*mongoose.connect(app.get("dbURL"), function(err){
-    if (err){
-        throw err;
-    }
-    else {
-        console.log("Successfully connected to Mongo db")
-    }
-});*/
+
 
 app.listen(app.get('port'), function(){
     console.log("Happy Robot server listening on port " + app.get('port'));
