@@ -16,7 +16,7 @@ var express         = require('express'),
     favicon         = require('serve-favicon');
     router          = express.Router();
     serveStatic     = require('serve-static')
-    env             = process.env || 'development';
+    env             = process.env.NODE_ENV || 'development';
     app             = express();
 
 if (env === 'development') {
