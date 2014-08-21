@@ -16,7 +16,7 @@ var express         = require('express'),
     favicon         = require('serve-favicon');
     router          = express.Router();
     serveStatic     = require('serve-static')
-    env             = process.env.NODE_ENV || 'development';
+    env             = process.env || 'development';
     app             = express();
 
 if (env === 'development') {
@@ -24,6 +24,7 @@ if (env === 'development') {
     app.set('host', 'http://localhost:8080')
 }
 console.log("ENV", env);
+console.log("ENV", process.env);
 if (env === 'production') {
     app.set('host', 'http://ec2-54-200-74-201.us-west-2.compute.amazonaws.com');
     app.set("dbURL",process.env.MONGOHQ_URL);
