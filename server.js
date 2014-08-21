@@ -1,23 +1,26 @@
 
-var express     = require('express'),
-    https       = require('https'),
-    passport    = require('passport'),
-    hbs         = require('hbs'),
-    path        = require('path'),
-    fs          = require('fs'),
-    flash       = require('connect-flash'),
-    //MongoStore  = require('connect-mongo')(express),
-    mongoose    = require('mongoose'),
-    util        = require('util'),
-    request     = require('request'),
-    app         = express();
-var session = require('express-session')
-var cookieParser = require('cookie-parser')
-var bodyParser = require('body-parser')
-var favicon = require('serve-favicon');
-var router = express.Router();
-var serveStatic = require('serve-static')
-var env = process.env.NODE_ENV || 'development';
+var express         = require('express'),
+    https           = require('https'),
+    passport        = require('passport'),
+    hbs             = require('hbs'),
+    path            = require('path'),
+    fs              = require('fs'),
+    flash           = require('connect-flash'),
+    session         = require('express-session'),
+    MongoStore      = require('connect-mongo')(session),
+    mongoose        = require('mongoose'),
+    util            = require('util'),
+    request         = require('request'),
+    cookieParser    = require('cookie-parser')
+    bodyParser      = require('body-parser')
+    favicon         = require('serve-favicon');
+    router          = express.Router();
+    serveStatic     = require('serve-static')
+    env             = process.env.NODE_ENV || 'development';
+    app             = express();
+
+
+
 if (env === 'development') {
     app.set("dbURL","mongodb://localhost:27017/node-mongo-ex");
     app.set('host', 'http://localhost:8080')
@@ -40,12 +43,12 @@ if (env === 'production') {
 
 
     app.use(session(
-/*        { secret: 'H3R0',
+        { secret: 'H3R0',
             store: new MongoStore({
                 db : "HappyRobot",
                 url : app.get("dbURL")
             })
-        }*/
+        }
      ));
     app.use(passport.initialize());
     app.use(passport.session());
